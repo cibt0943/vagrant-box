@@ -1,0 +1,70 @@
+{
+  "variables": {
+    "headless": "false",
+    "install_vagrant_key": "true",
+    "vagrant_insecure_key_url": "https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub",
+    "iso_url": "http://ftp.iij.ad.jp/pub/linux/centos/7.2.1511/isos/x86_64/CentOS-7-x86_64-Minimal-1511.iso",
+    "iso_checksum": "783eef50e1fb91c78901d0421d8114a29b998478",
+    "iso_checksum_type": "sha1",
+    "ssh_password": "vagrant",
+    "ssh_username": "vagrant",
+    "cm": "nocm",
+    "cm_version": ""
+  },
+  "provisioners": [
+    {
+      "environment_vars": [
+        "INSTALL_VAGRANT_KEY={{ user `install_vagrant_key` }}",
+        "VAGRANT_INSECURE_KEY_URL= {{ user `vagrant_insecure_key_url` }}",
+        "SSH_USERNAME={{ user `ssh_username` }}",
+        "SSH_PASSWORD={{ user `ssh_password` }}",
+        "CM={{ user `cm` }}",
+        "CM_VERSION={{ user `cm_version` }}"
+      ],
+      "type": "shell",
+      "execute_command": "echo 'vagrant' | {{ .Vars }} sudo -S -E bash '{{ .Path }}'",
+      "scripts": [
+        "scripts/base.sh",
+        "scripts/vagrant.sh",
+        "scripts/virtualbox.sh",
+        "scripts/cmtool.sh",
+        "scripts/cleanup.sh"
+      ]
+    }
+  ],
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "boot_command": [
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks7.cfg<enter>"
+      ],
+      "boot_wait": "10s",
+      "disk_size": 40520,
+      "guest_os_type": "RedHat_64",
+      "headless": "{{ user `headless` }}",
+      "http_directory": "http",
+      "hard_drive_interface": "sata",
+      "iso_checksum": "{{ user `iso_checksum` }}",
+      "iso_checksum_type": "{{ user `iso_checksum_type` }}",
+      "iso_url": "{{ user `iso_url` }}",
+      "ssh_password": "{{ user `ssh_password` }}",
+      "ssh_username": "{{ user `ssh_username` }}",
+      "ssh_port": 22,
+      "ssh_wait_timeout": "10000s",
+      "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
+      "guest_additions_path": "VBoxGuestAdditions_{{ .Version }}.iso",
+      "virtualbox_version_file": ".vbox_version",
+      "vboxmanage": [
+        ["modifyvm", "{{ .Name }}", "--memory", "1024"],
+        ["modifyvm", "{{ .Name }}", "--cpus", "1"]
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "output": "box/{{ .Provider }}/centos7.{{ user `cm` }}{{ user `cm_version` }}.box",
+      "keep_input_artifact": false
+    }
+  ]
+}
