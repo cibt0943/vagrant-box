@@ -11,7 +11,6 @@ yum -y --enablerepo=mysql56-community install mysql-community-server
 
 # mysql起動
 systemctl start mysqld.service
-# msql自動起動
 systemctl enable mysqld.service
 
 # firewallに対しmysqlへのアクセスを許可

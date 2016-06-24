@@ -9,7 +9,6 @@ sed -i -e 's/bind *127.0.0.1/bind 0.0.0.0/' /etc/redis.conf
 
 # redis起動
 systemctl start redis.service
-# redis自動起動
 systemctl enable redis.service
 
 # firewallにてredisが使う6379ポートへのアクセスを許可
