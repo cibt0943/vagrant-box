@@ -11,7 +11,7 @@ cd ~/$1
 # Gemfile生成
 rm Gemfile
 bundle init
-echo 'gem "rails", ">= 5.0.0.rc2", "< 5.1"' >> Gemfile
+echo 'gem "rails", ">= 5.0.0", "< 5.1"' >> Gemfile
 
 # bundleにてrailsインストール
 bundle install --path=vendor/bundle
