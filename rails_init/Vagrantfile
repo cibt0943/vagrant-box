@@ -1,8 +1,8 @@
 Vagrant.configure(2) do |config|
 
-  ap_name = "milkyway"
-  # ap_name = "account"
-  # ap_name = "clc"
+  ap_name = "clc"
+  # ap_name = "account-manager"
+  # ap_name = "milkyway"
   use_db = "1" #1:利用する、0:利用しない
 
 

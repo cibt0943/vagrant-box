@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -eux
 
 # CM(configuration management) and CM_VERSION variables should be set inside of Packer's template:
 #

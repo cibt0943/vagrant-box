@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -eux
 
 echo '==> Configuring settings for vagrant'
 
@@ -6,8 +6,7 @@ SSH_USER=${SSH_USER:-vagrant}
 SSH_USER_HOME=${SSH_USER_HOME:-/home/${SSH_USER}}
 
 
-# Packer passes boolean user variables through as '1', but this might change in
-# the future, so also check for 'true'.
+# Vagrant用の公開鍵を登録
 if [ "$INSTALL_VAGRANT_KEY" = "true" ] || [ "$INSTALL_VAGRANT_KEY" = "1" ]; then
   echo '==> Installing Vagrant SSH key'
   mkdir -pm 700 ${SSH_USER_HOME}/.ssh
