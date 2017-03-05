@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# mysqlのrpm登録
+# mysqlのrpmインストール
 yum -y install http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
 
 # mysqlのrpmは明示的に利用

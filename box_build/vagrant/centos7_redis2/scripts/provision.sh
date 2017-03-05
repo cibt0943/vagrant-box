@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # redisのインストール
-yum --enablerepo=epel -y install redis
+yum y --enablerepo=epel install redis
 
 # redisへのアクセス可能IPを無制限に設定
 cp /etc/redis.conf /etc/redis.conf.backup
