@@ -17,9 +17,6 @@ yum -y update
 yum install -y epel-release
 # epelリポジトリは明示的に利用するように無効化しておく
 sed -i -e 's/enabled *= *1/enabled=0/g' /etc/yum.repos.d/epel.repo
-# ミラーサイトは使わない
-sed -i -e 's/^#baseurl/baseurl/g' /etc/yum.repos.d/epel.repo
-sed -i -e 's/^mirrorlist/#mirrorlist/g' /etc/yum.repos.d/epel.repo
 
 # 古いカーネル削除
 yum -y install yum-utils

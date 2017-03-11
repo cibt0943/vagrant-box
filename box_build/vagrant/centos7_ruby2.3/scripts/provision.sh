@@ -16,7 +16,7 @@ echo 'eval "$(rbenv init -)"' >> /etc/profile.d/rbenv.sh
 source /etc/profile.d/rbenv.sh
 
 # rubyのビルドに必要なライブラリのインストール
-yum -y install openssl-devel readline-devel zlib-devel
+yum -y install bzip2 gcc openssl-devel readline-devel zlib-devel
 
 # rubyインストール
 rbenv install -v $1
