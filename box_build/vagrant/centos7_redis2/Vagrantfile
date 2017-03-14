@@ -6,7 +6,7 @@ Vagrant.configure(2) do |config|
   config.vm.provider "virtualbox" do |vb|
     vb.cpus = "1"
     vb.memory = "1024"
-    vb.name = "centos7_redis2.8"
+    vb.name = "centos7_redis2"
   end
 
   config.vm.provision "shell", path: "scripts/provision.sh", privileged: true

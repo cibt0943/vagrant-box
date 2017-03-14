@@ -1,0 +1,15 @@
+[Unit]
+Description=DynamoDB Local Server
+After=network.target
+
+[Service]
+Type=simple
+User=vagrant
+Group=vagrant
+WorkingDirectory=/opt/dynamodb_local
+ExecStart=/opt/dynamodb_local/run.sh
+TimeoutSec=300
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
