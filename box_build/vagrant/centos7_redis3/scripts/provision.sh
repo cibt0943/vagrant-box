@@ -1,10 +1,7 @@
 #!/bin/bash
 
-# remiのrpmインストール
-yum -y install http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
-
-# redisのインストール
-yum -y --enablerepo=remi,epel install redis
+# redis3のインストール
+yum -y --enablerepo=epel install redis
 
 # redisへのアクセス可能IPを無制限に設定
 cp /etc/redis.conf /etc/redis.conf.backup
