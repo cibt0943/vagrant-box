@@ -1,7 +1,9 @@
 Vagrant.configure(2) do |config|
   config.ssh.insert_key = false
+  config.vbguest.no_install = true
 
   config.vm.box = "centos/7"
+  config.vm.box_version = "1905.1"
   config.vm.synced_folder ".", "/vagrant", disabled: true
   config.vm.synced_folder ".", "/home/vagrant/sync", disabled: true
   config.vm.provider "virtualbox" do |vb|
