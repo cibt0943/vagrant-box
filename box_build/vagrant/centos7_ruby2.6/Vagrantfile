@@ -9,10 +9,10 @@ Vagrant.configure(2) do |config|
   config.vm.synced_folder ".", "/vagrant", disabled: true
   config.vm.provider "virtualbox" do |vb|
     vb.cpus = "1"
-    vb.memory = "1024"
+    vb.memory = "2048"
     vb.name = "centos7_ruby" + ruby_version
   end
 
-  config.vm.provision "shell", path: "scripts/provision.sh", privileged: false, args: [ruby_version]
+  config.vm.provision "shell", path: "scripts/provision.sh", privileged: true, args: [ruby_version]
   config.vm.provision "shell", path: "scripts/cleanup.sh", privileged: true
 end
