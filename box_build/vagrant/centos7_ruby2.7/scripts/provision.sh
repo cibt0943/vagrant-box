@@ -1,7 +1,9 @@
 #!/bin/bash
 
-# gitインストール
-yum -y install git
+# git2インストール
+sudo yum -y install https://repo.ius.io/ius-release-el7.rpm https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+sudo yum -y install git224
+sudo yum-config-manager --disable ius
 
 # rubyのビルドに必要なライブラリのインストール
 yum -y install bzip2 gcc openssl-devel readline-devel zlib-devel
